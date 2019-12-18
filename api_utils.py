@@ -1,4 +1,5 @@
-import os
+from urllib.parse import urljoin
+import posixpath
 
 import requests
 import numpy as np
@@ -12,17 +13,22 @@ class APIConnector:
 
     def get_info(self):
         r = requests.get(
-            url=os.path.join(self.api_url, 'api', self.student_id),
+            url=urljoin(
+                self.api_url,
+                posixpath.join('api', self.student_id),
+            ),
             params={"content-type": "application/json; charset=utf-8"},
         )
         return r.json()
 
     def get_population(self, i_generation: int):
-        url = os.path.join(
+        url = urljoin(
             self.api_url,
-            'population',
-            self.student_id,
-            f'popu{i_generation:03d}.txt',
+            posixpath.join(
+                'population',
+                self.student_id,
+                f'popu{i_generation:03d}.txt',
+            ),
         )
         r = requests.get(url)
         arr = np.asarray([
@@ -34,7 +40,10 @@ class APIConnector:
     def post_mpm(self, filename, i_generation):
         with open(filename, 'rb') as f:
             r = requests.post(
-                os.path.join(self.api_url, 'api', self.student_id),
+                urljoin(
+                    self.api_url,
+                    posixpath.join('api', self.student_id)
+                ),
                 data={'gen': i_generation},
                 files={'file': f},
             )
