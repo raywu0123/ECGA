@@ -20,7 +20,7 @@ class APITest(TestCase):
         self.assertTupleEqual(tuple(population.shape), (4000, 50))
 
     def test_get_info(self):
-        r = self.connector.get_info()
+        self.connector.get_info()
 
     def test_post_mpm(self):
         r = self.connector.post_mpm('testing_mpm.txt', i_generation=0)

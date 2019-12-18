@@ -70,7 +70,8 @@ class BB:
         self.D_total = self.D_data + self.D_model
 
         if len(self.components) == 2:
-            self.improvement = self.components[0].D_total + self.components[1].D_total - self.D_total
+            self.improvement = self.components[0].D_total + self.components[1].D_total \
+                - self.D_total
         else:
             self.improvement = None
 
