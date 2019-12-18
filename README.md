@@ -1,0 +1,1 @@
+* `cp .env-example .env` for your own setting
