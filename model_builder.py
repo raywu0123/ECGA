@@ -58,7 +58,7 @@ class BB:
         self.components = components
         self.population = population
         n = len(population)
-        self.D_model = (2 ** (len(indices) - 1)) * np.log2(n)
+        self.D_model = (2 ** len(indices) - 1) * np.log2(n)
 
         _, counts = np.unique(
             self.population[:, list(self.indices)],

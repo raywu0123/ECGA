@@ -33,4 +33,4 @@ class TestBB(TestCase):
         ])
         new_bb = BB(indices={0, 3}, population=population)
         self.assertEqual(new_bb.D_data, -4 * ((1 / 4) * np.log2(1 / 4) + (3 / 4) * np.log2(3 / 4)))
-        self.assertEqual(new_bb.D_model, 2 ** (2 - 1) * np.log2(4))
+        self.assertEqual(new_bb.D_model, (2 ** 2 - 1) * np.log2(4))
